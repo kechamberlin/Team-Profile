@@ -1,9 +1,3 @@
-const fs = require("fs");
-const axios = require("axios");
-const inquirer = require("inquirer");
-
-
-
 class Employee {
     constructor(name, id, email, title) {
         this.name = name;
@@ -12,16 +6,23 @@ class Employee {
         this.title = title;
     }
     getName() {
-
+        console.log(this.name);
     }
     getID() {
-
+        console.log(this.id);
     }
     getEmail() {
-
+        console.log(this.email);
     }
     getRole() {
-        return "Employee";
+        return this.title;
+    }
+    printInfo() {
+        console.log(`Name: ${this.name}`);
+        console.log(`ID: ${this.id}`);
+        console.log(`Email: ${this.email}`);
+        console.log(`Role: ${this.title}`);
+
     }
 }
 
@@ -32,7 +33,14 @@ class Manager extends Employee {
         this.officenumber = officenumber;
     }
     getRole() {
-
+        return this.title;
+    }
+    printInfo() {
+        console.log(`Name: ${this.name}`);
+        console.log(`ID: ${this.id}`);
+        console.log(`Email: ${this.email}`);
+        console.log(`Role: ${this.title}`);
+        console.log(`Office Number: ${this.officenumber}`);
     }
 }
 
@@ -41,48 +49,53 @@ class Engineer extends Employee {
         this.github = github;
     }
     getGithub() {
-        inquirer
-            .prompt({
-                message: "Enter your GitHub username",
-                name: "username"
-            })
-            .then(function ({ username }) {
-                const queryUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
-                axios.get(queryUrl).then(response => {
-                    console.log(response.data[0].name);
-                    const repositoryNames = response.data.map(repository => repository.name);
-                    console.log(repositoryNames);
-                })
-            });
-    }
-    getRole() {
+        console.log(this.github);
+    };
 
+    getRole() {
+        return this.title;
+    }
+    printInfo() {
+        console.log(`Name: ${this.name}`);
+        console.log(`ID: ${this.id}`);
+        console.log(`Email: ${this.email}`);
+        console.log(`Role: ${this.title}`);
+        console.log(`Github: ${this.github}`);
     }
 }
+
+
 
 class Intern extends Employee {
     constructor(school) {
         this.school = school;
     }
     getSchool() {
-
+        console.log(this.school);
     }
     getRole() {
-        
+        return this.title;
+    }
+    printInfo() {
+        console.log(`Name: ${this.name}`);
+        console.log(`ID: ${this.id}`);
+        console.log(`Email: ${this.email}`);
+        console.log(`Role: ${this.title}`);
+        console.log(`Scool: ${this.school}`);
     }
 }
 
 
 
-printInfo() {
-    console.log(`Name: ${this.name}`);
-    console.log(`ID: ${this.id}`);
-    console.log(`Email: ${this.email}`);
-};
 
 
 
-
-const manager = new Manager("Ned Stark", 1, "winterfell@gmail.com", 10);
+const manager = new Manager("Ned Stark", 1, "winterfell@gmail.com", "Manager", 10);
 manager.printInfo();
+
+const engineer1 = new Engineer("Tyrion Lannister", 2, "crossbow@gmail.com", "Engineer", "blackwaterhero");
+engineer1.printInfo();
+
+const intern1 = new Intern("Hot Pie", 3, "ilovepie@gmail.com", "Intern", "UC Crossroads");
+intern1.printInfo();
 
