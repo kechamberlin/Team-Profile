@@ -6,12 +6,10 @@ The first set of questions asked will prompt the user for "Manager" questions.
 The second set of questions asked will prompt the user for "Engineer" questions.
 The third set of questions asked will prompt the user for "Intern" questions.
 
-![Image of command line questions and input]
-()
+![Image of command line questions and input](team-profile-command-input.png)
 
 Once completed, the user's input will be generated onto an HTML page.
 
-![Image of HTML]
-()
+![Image of HTML](team-profile-html-page.png)
 
 
